@@ -23,7 +23,7 @@ const devConfig = {
       name: 'map',
       filename: 'remoteEntry.js',
       exposes: {
-        './MapApp': './src/bootstrap',
+        './KakaoMap': './src/bootstrap',
       },
       shared: packageJson.dependencies,
     }),
