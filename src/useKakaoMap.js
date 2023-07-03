@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-const KAKAO_MAP = '5d8b683dd3ff75bcb0ed805f8aac3689'
 
 const useKakaoMap = () => {
   const [isReady, setIsReady] = useState(false);
@@ -22,7 +21,7 @@ const useKakaoMap = () => {
     const scriptEl = document.createElement('script');
     scriptEl.id = 'kakao-map';
     scriptEl.async = true;
-    scriptEl.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP}&libraries=services&autoload=false`;
+    scriptEl.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_API_KEY}&libraries=services&autoload=false`;
     scriptEl.onload = () => {
       window.kakao.maps.load(() => {
         window.kakaoMapReady = true;
@@ -68,7 +67,7 @@ const useKakaoMap = () => {
       const latlng = new window.kakao.maps.LatLng(addressMatched.y, addressMatched.x);
 
       // add marker to map
-      const marker = new window.kakao.maps.Marker({ position: latlng });
+      const marker = new window.kakao.maps.Marker({position: latlng});
       marker.setMap(map);
 
       // Map focus center to address
@@ -76,7 +75,7 @@ const useKakaoMap = () => {
     }
   };
 
-  return { ready: isReady, createNewMap, createNewStaticMap, searchAddress, focusToAddress };
+  return {ready: isReady, createNewMap, createNewStaticMap, searchAddress, focusToAddress};
 };
 
 export default useKakaoMap;
