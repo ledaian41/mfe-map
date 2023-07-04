@@ -14,7 +14,8 @@ const prodConfig = {
       name: 'map',
       filename: 'remoteEntry.js',
       exposes: {
-        './KakaoMap': './src/bootstrap',
+        './KakaoMap': './src/kakaoMap/bootstrap',
+        './GoogleMap': './src/googleMap/bootstrap',
       },
       shared: packageJson.dependencies,
     }),

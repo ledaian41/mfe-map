@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 
+const scriptId = 'kakao-map'
+
 const useKakaoMap = () => {
   const [isReady, setIsReady] = useState(false);
 
-  const hasKakaoMapScript = document.getElementById('kakao-map') != null;
+  const hasKakaoMapScript = document.getElementById(scriptId) != null;
 
   useEffect(() => {
     const checkKakaoScript = () => {
@@ -19,7 +21,7 @@ const useKakaoMap = () => {
 
   if (!hasKakaoMapScript) {
     const scriptEl = document.createElement('script');
-    scriptEl.id = 'kakao-map';
+    scriptEl.id = scriptId;
     scriptEl.async = true;
     scriptEl.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_API_KEY}&libraries=services&autoload=false`;
     scriptEl.onload = () => {
