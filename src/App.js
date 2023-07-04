@@ -9,7 +9,6 @@ const App = () => {
   const googleMapDom = useRef(null);
   const googleSearchInput = useRef(null);
   const [searchKakaoAddress, setSearchKakaoAddress] = useState('');
-  const [searchGoogleAddress, setSearchGoogleAddress] = useState('');
   const kakao = useKakaoMap();
   const google = useGoogleMap();
 
