@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   module: {
@@ -34,6 +35,11 @@ module.exports = {
       template: './public/index.html',
       filename: './index.html',
       favicon: './public/favicon.ico',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public/assets" },
+      ],
     }),
     new CleanWebpackPlugin(),
     new Dotenv({systemvars: true}),
