@@ -6,9 +6,9 @@ const App = ({address = '제주특별자치도 제주시 관덕로 36'}) => {
   const {ready, focusToAddress, createNewMap} = useKakaoMap();
 
   useEffect(() => {
-    const initKakaoMap = async () => {
+    const initKakaoMap = () => {
       const map = createNewMap(mapRef.current, {});
-      await focusToAddress(address, map)
+      focusToAddress(address, map)
     };
     if (ready) initKakaoMap();
   }, [ready]);
